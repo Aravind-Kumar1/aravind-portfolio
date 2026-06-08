@@ -1,18 +1,49 @@
-"use client";
-
+import { Metadata } from "next";
 import { projects } from "@/lib/data/project";
 import { notFound } from "next/navigation";
 import { ExternalLink, Calendar, Tag, Users, Code, Github, Globe, Clock, CheckCircle2, PlayCircle, Download, Share2, BookOpen, Target, Layers, ArrowRight, Eye, Lightbulb, Zap, Heart } from "lucide-react";
 import Link from "next/link";
-import { use } from "react";
 import ContactPreview from "@/components/sections/contact-preview";
 
 interface Props {
     params: Promise<{ slug: string }>;
 }
 
-export default function ProjectDetail({ params }: Props) {
-    const { slug } = use(params);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const { slug } = await params;
+    const project = projects.find((p) => p.slug === slug);
+    if (!project) {
+        return {
+            title: "Project Not Found",
+        };
+    }
+    return {
+        title: project.title,
+        description: project.description || `Read about ${project.title}, a project completed by Aravind Chamaakuri.`,
+        alternates: {
+            canonical: `/projects/${slug}`,
+        },
+        openGraph: {
+            title: `${project.title} - Aravind Chamaakuri Project`,
+            description: project.description,
+            images: [
+                {
+                    url: project.image || "/hero-cir.png",
+                    alt: project.title,
+                },
+            ],
+        },
+    };
+}
+
+export async function generateStaticParams() {
+    return projects.map((project) => ({
+        slug: project.slug,
+    }));
+}
+
+export default async function ProjectDetail({ params }: Props) {
+    const { slug } = await params;
     const project = projects.find((p) => p.slug === slug);
 
     if (!project) return notFound();

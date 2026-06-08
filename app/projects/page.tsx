@@ -1,5 +1,21 @@
+import type { Metadata } from "next"
 import ProjectGallery from "@/components/sections/project-gallery"
 import ContactPreview from "@/components/sections/contact-preview";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Browse the digital projects and web applications built by Aravind Chamaakuri. Showcasing work across client, internship, and community contributions.",
+  keywords: [
+    "Aravind Chamaakuri Projects",
+    "Aravind Portfolio Projects",
+    "Web Development Projects",
+    "React Projects Portfolio",
+    "Next.js Projects"
+  ],
+  alternates: {
+    canonical: "/projects",
+  },
+};
 
 export default function ProjectsPage() {
     return (

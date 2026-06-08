@@ -1,6 +1,22 @@
+import type { Metadata } from "next"
 import ContactForm from "@/components/sections/contact-form"
 import SocialLinks from "@/components/sections/social-links"
 import DualScrollComponent from "@/components/sections/DualScrollComponent";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Aravind Chamaakuri for custom web design, frontend engineering, app development, or partnership opportunities.",
+  keywords: [
+    "Contact Aravind Chamaakuri",
+    "Hire Aravind Chamaakuri",
+    "Aravind Chamaakuri Email",
+    "Frontend Developer Freelance",
+    "Hire React Developer"
+  ],
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 export default function ContactPage() {
   return (
