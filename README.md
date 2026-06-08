@@ -11,8 +11,6 @@ A sleek, responsive **portfolio website** built using modern web technologies to
 - **Styling**: Tailwind CSS
 - **Animations**: Framer Motion
 
----
-
 ## ✨ Features
 
 - Fully responsive layout for mobile, tablet, and desktop.
